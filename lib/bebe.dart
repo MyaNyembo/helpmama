@@ -120,7 +120,7 @@ class _InfobebeState extends State<Infobebe> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Next workout",
+                      "Next workout Ortega",
                       style: TextStyle(
                           fontSize: 16,
                           color: Color.AppColor.homePageBackground5),
