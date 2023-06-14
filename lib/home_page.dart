@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Row(
               children: [
-                Text("HelpMama",
+                Text("SefuMama",
                     style: GoogleFonts.pacifico(
                         textStyle: TextStyle(
                             fontSize: 30,
