@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:monapp/values/values.dart';
 import 'package:monapp/video_info.dart';
 
 import 'home_page.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.pink,
+        ),
       ),
       home: const NavigationScreen(),
     );

@@ -6,18 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:monapp/video_info.dart';
-import 'colors.dart' as Color;
-import 'colors.dart';
+import 'values/values.dart' as Color;
 import 'package:flutter/src/painting/strut_style.dart';
 
-class Infobebe extends StatefulWidget {
-  const Infobebe({Key? key}) : super(key: key);
+class InfoBebe extends StatefulWidget {
+  const InfoBebe({Key? key}) : super(key: key);
 
   @override
-  State<Infobebe> createState() => _InfobebeState();
+  State<InfoBebe> createState() => _InfoBebeState();
 }
 
-class _InfobebeState extends State<Infobebe> {
+class _InfoBebeState extends State<InfoBebe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

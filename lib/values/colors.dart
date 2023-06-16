@@ -1,4 +1,4 @@
-import 'dart:ui';
+part of values;
 
 
 class AppColor{

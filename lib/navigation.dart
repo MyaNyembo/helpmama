@@ -22,7 +22,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     });
   }
 
-  static List<Widget> screens = [HomePage(), Infobebe(), VideoInfo()];
+  static List<Widget> screens = [const HomePage(), const InfoBebe(), const VideoInfo()];
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
       body: screens.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.sms_failed), label: "Moi"),
-          BottomNavigationBarItem(icon: Icon(Icons.abc), label: "Mon bébé"),
+          BottomNavigationBarItem(icon: Icon(Icons.child_care), label: "Mon bébé"),
           BottomNavigationBarItem(icon: Icon(Icons.phone), label: "Expert"),
         ],
         currentIndex: _selectedIndex,
