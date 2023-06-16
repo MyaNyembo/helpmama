@@ -86,7 +86,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                               ),
                             ),
                             title: const Text("Unknown Name"),
-                            subtitle: const Text("guest-user@exploress.space"),
+                            subtitle: const Text("guest-user@mail.com"),
                           ),
                         ),
                         const SizedBox(
