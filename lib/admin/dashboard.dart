@@ -117,7 +117,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child: const Column(
+                                child: Column(
                                   children: [
                                     Spacer(),
                                     Text(
@@ -154,7 +154,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child: const Column(
+                                child:  Column(
                                   children: [
                                     Spacer(),
                                     Text(
@@ -204,7 +204,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child: const Column(
+                                child:  Column(
                                   children: [
                                     Spacer(),
                                     Text(
@@ -240,7 +240,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child: const Column(
+                                child:  Column(
                                   children: [
                                     Spacer(),
                                     Text(
@@ -278,7 +278,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     child: SizedBox(
                       child: Column(
                         children: [
-                          const Row(),
+                           Row(),
                           const Spacer(),
                           Wrap(
                             spacing: 8.0,

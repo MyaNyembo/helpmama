@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:monapp/video_info.dart';
+import 'package:monapp/DemoApp.dart';
 
 import 'bebe.dart';
 import 'home_page.dart';
-
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({Key? key}) : super(key: key);
@@ -13,7 +12,6 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
-
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -22,7 +20,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
     });
   }
 
-  static List<Widget> screens = [const HomePage(), const InfoBebe(), const VideoInfo()];
+  static List<Widget> screens = [
+    const HomePage(),
+    DemoApp()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.sms_failed), label: "Moi"),
-          BottomNavigationBarItem(icon: Icon(Icons.child_care), label: "Mon bébé"),
-          BottomNavigationBarItem(icon: Icon(Icons.phone), label: "Expert"),
+              icon: Icon(Icons.home_rounded), label: "Accueil"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month), label: "Calendrier"),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -44,5 +45,3 @@ class _NavigationScreenState extends State<NavigationScreen> {
     );
   }
 }
-
-
