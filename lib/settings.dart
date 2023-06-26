@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:monapp/admin/dashboard.dart';
 import 'package:monapp/values/values.dart';
 
 class Settings extends StatefulWidget {
@@ -34,7 +35,7 @@ class _SettingsState extends State<Settings> {
                   Container(
                     width: 100,
                     height: 100,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(100/2)),
                         image: DecorationImage(
                             image: AssetImage("assets/femmeEnceintebelle.jpg"),
@@ -49,19 +50,19 @@ class _SettingsState extends State<Settings> {
               const SizedBox(height: 16.0,),
               ListTile(
                 onTap: () {},
-                leading: Icon(Icons.person),
+                leading: const Icon(Icons.person),
                 title: Text("Personne à contacter", style: GoogleFonts.inter(),),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
                 onTap: () {},
-                leading: Icon(Icons.warning),
+                leading: const Icon(Icons.warning),
                 title: Text("Arreter ma grossesse", style: GoogleFonts.inter(),),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
                 onTap: () {},
-                leading: Icon(Icons.logout),
+                leading: const Icon(Icons.logout),
                 title: Text("Se déconnecter", style: GoogleFonts.inter(),),
               ),
               const SizedBox(height: 16.0,),
@@ -72,7 +73,15 @@ class _SettingsState extends State<Settings> {
                 leading: Icon(Icons.info_outline),
                 title: Text("Informations", style: GoogleFonts.inter(),),
               ),
-              Divider(),
+              const SizedBox(height: 16.0,),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(AdminDashboard.route());
+                },
+                leading: Icon(Icons.admin_panel_settings_outlined),
+                title: Text("Admin", style: GoogleFonts.inter(),),
+              ),
+              const Divider(),
               ListTile(
                 onTap: () {},
                 leading: Icon(Icons.share),
