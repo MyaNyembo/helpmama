@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monapp/DemoApp.dart';
 
 import 'bebe.dart';
+import 'calendar.dart';
 import 'home_page.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   static List<Widget> screens = [
     const HomePage(),
-    DemoApp()
+    const DemoApp()
   ];
 
   @override

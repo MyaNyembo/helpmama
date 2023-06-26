@@ -6,6 +6,7 @@ import 'package:monapp/values/values.dart';
 import 'package:monapp/video_info.dart';
 
 import 'home_page.dart';
+import 'login.dart';
 import 'navigation.dart';
 
 void main() {
@@ -19,14 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter HelpMama',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.pink,
         ),
       ),
-      home: const NavigationScreen(),
+      home: const LoginPage(),
     );
   }
 }
