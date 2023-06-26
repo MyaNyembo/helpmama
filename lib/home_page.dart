@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
           title: Text(
             "HelpMama",
             style: GoogleFonts.pacifico(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                   fontSize: 30,
                   color: Colors.white,
                   fontWeight: FontWeight.w700),

@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 
 
 class DemoApp extends StatefulWidget {
+  const DemoApp({super.key});
+
   @override
-  _DemoAppState createState() => _DemoAppState();
+  State<DemoApp> createState() => _DemoAppState();
 }
 
 class _DemoAppState extends State<DemoApp> {
@@ -60,7 +61,7 @@ class _DemoAppState extends State<DemoApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calendrier'),
+        title: const Text('Calendrier'),
         centerTitle: true,
       ),
       body:  SafeArea(
@@ -100,3 +101,4 @@ class _DemoAppState extends State<DemoApp> {
     );
   }
 }
+
