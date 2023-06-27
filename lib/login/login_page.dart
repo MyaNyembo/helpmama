@@ -1,13 +1,16 @@
 import 'package:animations/animations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:monapp/splash_screen.dart';
+import 'package:monapp/login/login_bloc/login_cubit.dart';
+import 'package:monapp/login/login_bloc/login_cubit.dart';
+import 'package:monapp/login/splash_screen.dart';
 import 'package:monapp/values/values.dart';
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -30,7 +33,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
     controller1 = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5,),
+      duration: const Duration(
+        seconds: 5,
+      ),
     );
     animation1 = Tween<double>(begin: .1, end: .15).animate(
       CurvedAnimation(
@@ -54,8 +59,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         curve: Curves.easeInOut,
       ),
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
 
     controller2 = AnimationController(
       vsync: this,
@@ -83,8 +88,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         curve: Curves.easeInOut,
       ),
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
 
     Timer(Duration(milliseconds: 2500), () {
       controller1.forward();
@@ -99,6 +104,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     controller2.dispose();
     super.dispose();
   }
+
+  bool showPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -154,8 +161,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         flex: 5,
                         child: Padding(
                           padding: EdgeInsets.only(top: size.height * .1),
-                          child:
-                          Text(
+                          child: Text(
                             "HelpMama",
                             style: GoogleFonts.pacifico(
                               textStyle: TextStyle(
@@ -163,7 +169,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1,
-                                wordSpacing: 4,),
+                                wordSpacing: 4,
+                              ),
                             ),
                           ),
                           /*,Text(
@@ -186,17 +193,57 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              EntryComponent(Icons.account_circle_outlined,
-                                hint: 'User name...',
+                              BlocBuilder<LoginCubit, LoginState>(
+                                buildWhen: (previous, current) => previous.username != current.username,
+                                builder: (context, state) {
+                                  return EntryComponent(
+                                      Icons.account_circle_outlined,
+                                      hint: 'User name...',
+                                      onChanged: (id) => BlocProvider
+                                      .of<LoginCubit>(context)
+                                      .usernameChanged(id),
+                                      errorText: state.username.invalid ? 'matricule invalide' : null,
+                                  );
+                                },
                               ),
-                              EntryComponent(Icons.email_outlined,
-                                hint: 'Email...',
-                                isEmail: true,
+                              BlocBuilder<LoginCubit, LoginState>(
+                                buildWhen: (previous, current) => previous.email != current.email,
+                                builder: (context, state) {
+                                  return EntryComponent(
+                                    Icons.email_outlined,
+                                    hint: 'Email...',
+                                    isEmail: true,
+                                    onChanged: (email) => BlocProvider
+                                        .of<LoginCubit>(context)
+                                        .emailChanged(email),
+                                    errorText: state.email.invalid ? 'email invalide' : null,
+                                  );
+                                },
                               ),
-                              EntryComponent(Icons.lock_outline,
-                                hint: 'Password...',
-                                isPassword: true,
+                              BlocBuilder<LoginCubit, LoginState>(
+                                buildWhen: (previous, current) => previous.password != current.password,
+                                builder: (context, state) {
+                                  return EntryComponent(
+                                    Icons.lock_outline,
+                                    hint: 'Password...',
+                                    isPassword: showPassword,
+                                    onChanged: (password) =>
+                                        BlocProvider.of<LoginCubit>(context).passwordChanged(password),
+                                    errorText: state.password.invalid ? 'mot de passe invalid' : null,
+                                    suffixIcon: IconButton(
+                                      icon: Icon(showPassword? CupertinoIcons.eye_slash : CupertinoIcons.eye, size: 18,),
+                                      onPressed: (){
+                                        setState(() {
+                                          showPassword = !showPassword;
+                                        });
+                                      },
+                                    ),
+
+                                  );
+                                },
                               ),
+
+
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -206,14 +253,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                       HapticFeedback.lightImpact();
                                       Fluttertoast.showToast(
                                           msg: 'Login button pressed');
+                                      return true;
                                     },
                                   ),
                                   SizedBox(width: size.width / 20),
-
                                   ButtonComponent(
                                     'Forgotten password!',
                                     onPressed: () {
                                       HapticFeedback.lightImpact();
+                                      return false;
                                       //Fluttertoast.showToast(msg: 'Forgotten password button pressed');
                                     },
                                   ),
@@ -229,12 +277,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             ButtonComponent(
-                               'Create a new Account',
+                              'Create a new Account',
                               width: 240,
                               onPressed: () {
                                 HapticFeedback.lightImpact();
                                 Fluttertoast.showToast(
-                                    msg: 'Create a new account button pressed');
+                                  msg: 'Create a new account button pressed',
+                                  webBgColor: null,
+                                );
+                                return false;
                               },
                             ),
                             SizedBox(height: size.height * .05),
@@ -253,8 +304,17 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   // ignore: non_constant_identifier_names
-  Widget EntryComponent(IconData icon, {required String hint, bool isPassword = false, bool? isEmail}) {
+  Widget EntryComponent(IconData icon, {
+    required String hint,
+    void Function(String)? onChanged,
+    String? errorText,
+    bool isPassword = false,
+    bool? isEmail,
+    Widget? suffixIcon,
+  }) {
+
     Size size = MediaQuery.of(context).size;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: BackdropFilter(
@@ -264,7 +324,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         ),
         child: Container(
           constraints: const BoxConstraints(maxWidth: 500),
-          height:50 ,
+          height: 50,
           alignment: Alignment.center,
           padding: EdgeInsets.only(right: size.width / 30),
           decoration: BoxDecoration(
@@ -279,16 +339,21 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 ? TextInputType.emailAddress
                 : TextInputType.text,
             decoration: InputDecoration(
-              prefixIcon: Icon(
-                icon,
+              prefixIcon: Icon(icon,
                 color: Colors.white.withOpacity(.7),
               ),
+              suffixIcon: !isPassword ? null : suffixIcon,
+              errorText: errorText,
               border: InputBorder.none,
               hintMaxLines: 1,
               hintText: hint,
-              hintStyle:
-              TextStyle(fontSize: 14, color: Colors.white.withOpacity(.5)),
+              hintStyle: TextStyle(
+                fontSize: 14,
+                color: Colors.white.withOpacity(.5),
+              ),
             ),
+            onChanged: onChanged,
+
           ),
         ),
       ),
@@ -297,36 +362,44 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   // ignore: non_constant_identifier_names
   Widget ButtonComponent(
-     String text,{
+    String text, {
     final double? width,
-    VoidCallback? onPressed,}) {
-
+    bool Function()? onPressed,
+  }) {
     return OpenContainer(
+
       closedBuilder: (_, openContainer) {
-        return Container(
-          constraints: const BoxConstraints(minWidth: 150),
-          height: 50,//size.width / 8,
-          width: width,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.cyan.withOpacity(.5),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(color: Colors.white.withOpacity(.8)),
+        return InkWell(
+          //highlightColor: Colors.green,
+          //splashColor: Colors.green,
+          //hoverColor: Colors.green,
+          //onTap: onPressed,
+          child: Container(
+            constraints: const BoxConstraints(minWidth: 150),
+            height: 50,
+            //size.width / 8,
+            width: width,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.cyan.withOpacity(.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Text(
+              text,
+              style: TextStyle(color: Colors.white.withOpacity(.8)),
+            ),
           ),
         );
       },
       closedColor: Colors.transparent,
       openColor: Colors.white,
       closedElevation: 20,
-      closedShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20)),
-      transitionDuration: Duration(milliseconds: 700),
+      closedShape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      transitionDuration: const Duration(milliseconds: 700),
       openBuilder: (_, closeContainer) {
-        onPressed!();
-        return TransitPage();
+        //onPressed();
+        return const TransitPage();
       },
     );
     return ClipRRect(
@@ -341,7 +414,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           onTap: onPressed,
           child: Container(
             constraints: const BoxConstraints(minWidth: 150),
-            height: 50,//size.width / 8,
+            height: 50,
+            //size.width / 8,
             width: width,
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -367,12 +441,12 @@ class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..shader = LinearGradient(
-          colors: [Color(0xffFD5E3D), Color(0xffC43990)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight)
+      ..shader = const LinearGradient(
+              colors: [Color(0xffFD5E3D), Color(0xffC43990)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(
-        center: Offset(0, 0),
+        center: const Offset(0, 0),
         radius: radius,
       ));
 
