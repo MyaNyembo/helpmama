@@ -6,6 +6,7 @@ import 'package:monapp/settings.dart';
 import 'package:monapp/widget/evolution_widget.dart';
 import 'package:monapp/widget/information_widget.dart';
 
+import 'InfoHabillement.dart';
 import 'bebe.dart';
 import 'values/values.dart' as Color;
 
@@ -90,7 +91,11 @@ class _HomePageState extends State<HomePage> {
                       );
                     },),
                     const SizedBox(height: 8.0,),
-                    InformationWidget(photo: "", onclick: () {},),
+                    InformationWidget(photo: "", onclick: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const InfoHabillement())
+                      );
+                    },),
                     const SizedBox(height: 8.0,),
                     InformationWidget(photo: "", onclick: () {},),
                     const SizedBox(height: 8.0,),
