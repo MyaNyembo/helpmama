@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:monapp/admin/doctors/doctor_data_tab.dart';
 import 'package:utils_component/utils_component.dart';
 
 import '../values/values.dart';
+import 'doctors/datatable.dart';
 
 class AdminDashboard extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -144,17 +146,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 decoration: BoxDecoration(
                                   color: Colors.black12,
                                   borderRadius: BorderRadius.circular(20),
-                                  /*image: const DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/bg_image_web.jpeg"),
-                                      fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                          Colors.grey, BlendMode.color)),*/
                                 ),
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child:  Column(
+                                child:  const Column(
                                   children: [
                                     Spacer(),
                                     Text(
@@ -194,21 +190,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 decoration: BoxDecoration(
                                   color: Colors.black12,
                                   borderRadius: BorderRadius.circular(20),
-                                  /*image: const DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/bg_image_web.jpeg"),
-                                      fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                          Colors.grey, BlendMode.color)),*/
                                 ),
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child:  Column(
+                                child:  const Column(
                                   children: [
                                     Spacer(),
                                     Text(
-                                      "Verifier",
+                                      "Femmmes",
                                       style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.white,
@@ -222,7 +212,10 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             InkWell(
                               hoverColor: Colors.teal,
                               borderRadius: BorderRadius.circular(20),
-                              onTap: () {},
+                              onTap: () {
+                                //Navigator.of(context).push(DataTableDemo.route());
+                                Navigator.of(context).push(DoctorDataTablePage.route());
+                              },
                               child: Container(
                                 margin: const EdgeInsets.all(4.0),
                                 height: 75,
@@ -230,21 +223,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 decoration: BoxDecoration(
                                   color: Colors.black12,
                                   borderRadius: BorderRadius.circular(20),
-                                  /*image: const DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/bg_image_web.jpeg"),
-                                      fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                          Colors.grey, BlendMode.color)),*/
                                 ),
                                 constraints: const BoxConstraints(
                                   maxWidth: 200,
                                 ),
-                                child:  Column(
+                                child:  const Column(
                                   children: [
                                     Spacer(),
                                     Text(
-                                      "Database",
+                                      "Docteurs",
                                       style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.white,
