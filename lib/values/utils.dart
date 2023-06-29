@@ -8,7 +8,7 @@ import 'dart:core';
  *  DateTime dateRegles = DateTime(2023, 6, 26);
  *  int dureeCycle = 30;
  *  // Appeler la fonction et afficher le résultat
- *  DateTime dateAccouchement = calculateDueDate(dateRegles, dureeCycle);
+ *  DateTime dateAccouchement = calculaterDateAccouchement(dateRegles, dureeCycle);
  *  print("La date prévue d'accouchement est le ${dateAccouchement.day}"
  *  "/${dateAccouchement.month}/${dateAccouchement.year}.");
  * }
@@ -17,13 +17,13 @@ import 'dart:core';
 
 /// Pour calculer la date de l’accouchement d’une femme en fonction de la date
 /// de ses derniers règles et la durée de son cycle, il faut utiliser la
-/// formule de Naegele123. Cette formule consiste à ajouter 9 mois et 7 jours
+/// formule de Naegele. Cette formule consiste à ajouter 9 mois et 7 jours
 /// à la date des dernières règles, puis à ajuster le résultat selon la durée
 /// du cycle.
 
 /// Définir une fonction qui prend en paramètres la date des derniers règles
 /// et la durée du cycle
-DateTime calculateDueDate(DateTime dateRegles, int dureeCycle) {
+DateTime calculaterDateAccouchement(DateTime dateRegles, int dureeCycle) {
   /// Ajouter 9 mois et 7 jours à la date des derniers règles
   ///DateTime dateAccouchement = dateRegles.add(Duration(days: 7, months: 9));
   DateTime dateAccouchement = dateRegles.add(const Duration(days: (9*30)+7,));
