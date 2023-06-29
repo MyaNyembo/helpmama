@@ -63,16 +63,13 @@ class Doctor {
     required this.lastUpdate,
     this.phoneNumbers = const <String>[],
     this.emails = const <String>[],
-    bool? selected,
 
-  }) : _selected = selected;
 
-  bool? _selected;
+  });
 
-  bool? get selected => _selected;
-  set selected(bool? value){
-    _selected = value;
-  }
+  bool? selected = false;
+
+
 
   static Doctor empty = Doctor(
     name: "",
@@ -154,7 +151,7 @@ class Doctor {
     DateTime? lastUpdate,
     List<String>? phoneNumbers,
     List<String>? emails,
-    bool? selected,
+
   }) {
     return Doctor(
       name: name ?? this.name,
@@ -168,7 +165,7 @@ class Doctor {
       lastUpdate: lastUpdate ?? this.lastUpdate,
       phoneNumbers: phoneNumbers ?? this.phoneNumbers,
       emails: emails ?? this.emails,
-      selected: selected ?? _selected,
+
     );
   }
 
@@ -230,11 +227,10 @@ class Doctor {
 }
 
 class DoctorDataSource extends DataTableSource {
-  final List<Map<String, dynamic>> data =  doctorData;
 
   DoctorDataSource();
 
-  List<Doctor> get _doctors => data
+  List<Doctor> _doctors = doctorData
       .map((final Map<String, dynamic> data) => Doctor.fromJsonApi(data))
       .toList();
 

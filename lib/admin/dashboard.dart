@@ -5,7 +5,7 @@ import 'package:monapp/admin/doctors/doctor_data_tab.dart';
 import 'package:utils_component/utils_component.dart';
 
 import '../values/values.dart';
-import 'doctors/datatable.dart';
+
 
 class AdminDashboard extends StatefulWidget {
   static route() => MaterialPageRoute(
