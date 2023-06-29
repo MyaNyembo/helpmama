@@ -125,7 +125,8 @@ class _TransitPageState extends State<TransitPage> with TickerProviderStateMixin
     return Scaffold(
       body: Stack(
         children: [
-          const Row(
+
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(

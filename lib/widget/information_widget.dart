@@ -22,30 +22,35 @@ class _InformationWidgetState extends State<InformationWidget> {
         child: Container(
           width: double.infinity,
           height: 100,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                height: 100,
-                width: 120,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      bottomLeft: Radius.circular(16.0)),
-                  image: DecorationImage(
-                      image: AssetImage(widget.photo),
-                      fit: BoxFit.cover),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(16.0),
-                        bottomLeft: Radius.circular(16.0)),
-                    color: Colors.black.withOpacity(0.3),
+              Row(
+                children: [
+                  Container(
+                    height: 100,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(16.0),
+                          bottomLeft: Radius.circular(16.0)),
+                      image: DecorationImage(
+                          image: AssetImage(widget.photo),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            bottomLeft: Radius.circular(16.0)),
+                        color: Colors.black.withOpacity(0.3),
+                      ),
+                      child: Column(
+                        children: [],
+                      ),
+                    ),
                   ),
-                  child: Column(
-                    children: [],
-                  ),
-                ),
+                ],
               ),
               const SizedBox(width: 8.0,),
 
