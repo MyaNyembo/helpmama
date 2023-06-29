@@ -4,59 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../navigation.dart';
 
-
-class MyCustomWidget extends StatefulWidget {
-  @override
-  State<MyCustomWidget> createState() => _MyCustomWidgetState();
-}
-
-class _MyCustomWidgetState extends State<MyCustomWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Text(
-              'Suppose this is an app in your Phone\'s Screen page.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            OpenContainer(
-              closedBuilder: (_, openContainer) {
-                return Container(
-                  height: 80,
-                  width: 80,
-                  child: Center(
-                    child: Text(
-                      'App Logo',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                );
-              },
-              openColor: Colors.white,
-              closedElevation: 20,
-              closedShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              transitionDuration: Duration(milliseconds: 700),
-              openBuilder: (_, closeContainer) {
-                return TransitPage();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class TransitPage extends StatefulWidget {
   const TransitPage({super.key});
 
@@ -126,7 +73,7 @@ class _TransitPageState extends State<TransitPage> with TickerProviderStateMixin
       body: Stack(
         children: [
 
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
