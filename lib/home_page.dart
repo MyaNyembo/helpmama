@@ -85,7 +85,19 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     const SizedBox(height: 16.0),
-                    InformationWidget(photo: "", onclick: () {
+                    InformationWidget(photo: "assets/alimentation.jpg", onclick: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const InfoAlimentation())
+                      );
+                    },),
+                    const SizedBox(height: 8.0,),
+                    InformationWidget(photo: "assets/coup-moyen-femme-enceinte-posant-exterieur.jpg", onclick: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const InfoHabillement())
+                      );
+                    },),
+                    const SizedBox(height: 8.0,),
+                    InformationWidget(photo: "assets/img.png", onclick: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => const InfoAlimentation())
                       );
@@ -93,16 +105,17 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 8.0,),
                     InformationWidget(photo: "", onclick: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const InfoHabillement())
+                          MaterialPageRoute(
+                              builder: (context) => const InfoAlimentation())
                       );
                     },),
                     const SizedBox(height: 8.0,),
-                    InformationWidget(photo: "", onclick: () {},),
-                    const SizedBox(height: 8.0,),
-                    InformationWidget(photo: "", onclick: () {},),
-                    const SizedBox(height: 8.0,),
-                    InformationWidget(photo: "", onclick: () {},),
-                    const SizedBox(height: 8.0,),
+                    InformationWidget(photo: "", onclick: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const InfoAlimentation())
+                      );
+                    },),
                   ],
                 ),
               ))
